@@ -62,7 +62,7 @@ This project was developed as a Java programming project to practice:
 * Java Swing GUI
 * File Handling
 * Basic CRUD operations
-👨‍💻 Author
 
+👨‍💻 Author
 Mohammod Mustakim
 
