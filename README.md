@@ -53,6 +53,11 @@ LaptopManagementApplication/
 2.Open the project in VS Code or any Java IDE.
 3.Compile the Java files.
 4.Run Start.java.
+
+## 📸 Screenshots
+
+![Laptop Management System](Screenshot%202026-09-24%20121657.png)
+
 🎯 Purpose
 
 This project was developed as a Java programming project to practice:
