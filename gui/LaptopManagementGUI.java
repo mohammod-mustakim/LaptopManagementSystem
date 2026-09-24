@@ -213,7 +213,37 @@ public class LaptopManagementGUI extends JFrame {
         totalLabel.setFont(new Font("Arial", Font.BOLD, 16));
         panel.add(totalLabel);
 
+
+        // ==========================================
+        // LOAD SAVED LAPTOPS INTO TABLE
+        // ==========================================
+
+        for (Laptop laptop : manager.getLaptops()) {
+
+            tableModel.addRow(new Object[]{
+
+                laptop.getId(),
+                laptop.getBrand(),
+                laptop.getModel(),
+                laptop.getRam(),
+                laptop.getStorage(),
+                laptop.getPrice(),
+                laptop.getType()
+
+            });
+        }
+
+        // Update total laptop count
+        totalLabel.setText(
+                "Total Laptops: "
+                + manager.getLaptops().size()
+        );
+
+
+        // ==========================================
         // INSERT BUTTON
+        // ==========================================
+
         insertButton.addActionListener(e -> {
 
             try {
@@ -229,19 +259,30 @@ public class LaptopManagementGUI extends JFrame {
                         || storageField.getText().isEmpty()
                         || priceField.getText().isEmpty()) {
 
-                    throw new Exception("Please fill all fields.");
+                    throw new Exception(
+                            "Please fill all fields."
+                    );
                 }
 
-                int ram = Integer.parseInt(ramField.getText());
+                int ram =
+                        Integer.parseInt(
+                                ramField.getText()
+                        );
 
                 int storage =
-                        Integer.parseInt(storageField.getText());
+                        Integer.parseInt(
+                                storageField.getText()
+                        );
 
                 double price =
-                        Double.parseDouble(priceField.getText());
+                        Double.parseDouble(
+                                priceField.getText()
+                        );
 
                 String type =
-                        typeComboBox.getSelectedItem().toString();
+                        typeComboBox
+                                .getSelectedItem()
+                                .toString();
 
                 Laptop laptop;
 
@@ -273,7 +314,7 @@ public class LaptopManagementGUI extends JFrame {
 
                 if (added) {
 
-                    // Add laptop to JTable
+                    // Add new laptop to table
                     tableModel.addRow(new Object[]{
 
                         laptop.getId(),
@@ -286,7 +327,7 @@ public class LaptopManagementGUI extends JFrame {
 
                     });
 
-                    // Update total laptop count
+                    // Update total
                     totalLabel.setText(
                             "Total Laptops: "
                             + manager.getLaptops().size()
@@ -320,7 +361,11 @@ public class LaptopManagementGUI extends JFrame {
             }
         });
 
+
+        // ==========================================
         // UPDATE BUTTON
+        // ==========================================
+
         updateButton.addActionListener(e -> {
 
             try {
@@ -387,7 +432,9 @@ public class LaptopManagementGUI extends JFrame {
                 }
 
                 String type =
-                        typeComboBox.getSelectedItem().toString();
+                        typeComboBox
+                                .getSelectedItem()
+                                .toString();
 
                 boolean updated =
                         manager.updateLaptop(
@@ -412,27 +459,39 @@ public class LaptopManagementGUI extends JFrame {
                                 .equals(id)) {
 
                             tableModel.setValueAt(
-                                    brand, i, 1
+                                    brand,
+                                    i,
+                                    1
                             );
 
                             tableModel.setValueAt(
-                                    model, i, 2
+                                    model,
+                                    i,
+                                    2
                             );
 
                             tableModel.setValueAt(
-                                    ram, i, 3
+                                    ram,
+                                    i,
+                                    3
                             );
 
                             tableModel.setValueAt(
-                                    storage, i, 4
+                                    storage,
+                                    i,
+                                    4
                             );
 
                             tableModel.setValueAt(
-                                    price, i, 5
+                                    price,
+                                    i,
+                                    5
                             );
 
                             tableModel.setValueAt(
-                                    type, i, 6
+                                    type,
+                                    i,
+                                    6
                             );
 
                             break;
@@ -455,12 +514,17 @@ public class LaptopManagementGUI extends JFrame {
 
                 JOptionPane.showMessageDialog(
                         this,
-                        "Exception: " + ex.getMessage()
+                        "Exception: "
+                        + ex.getMessage()
                 );
             }
         });
 
+
+        // ==========================================
         // SELECT ROW FROM TABLE
+        // ==========================================
+
         table.getSelectionModel()
                 .addListSelectionListener(e -> {
 
@@ -512,7 +576,11 @@ public class LaptopManagementGUI extends JFrame {
             }
         });
 
+
+        // ==========================================
         // DELETE BUTTON
+        // ==========================================
+
         deleteButton.addActionListener(e -> {
 
             String id = idField.getText();
@@ -555,7 +623,11 @@ public class LaptopManagementGUI extends JFrame {
             }
         });
 
+
+        // ==========================================
         // CLEAR BUTTON
+        // ==========================================
+
         clearButton.addActionListener(e -> {
 
             idField.setText("");
@@ -567,6 +639,7 @@ public class LaptopManagementGUI extends JFrame {
 
             typeComboBox.setSelectedIndex(0);
         });
+
 
         add(panel);
 
