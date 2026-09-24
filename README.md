@@ -54,6 +54,8 @@ LaptopManagementApplication/
 3.Compile the Java files.
 4.Run Start.java.
 
+## 📸 Screenshots
+
 ![Laptop Management System](laptop-management-system.png)
 
 🎯 Purpose
